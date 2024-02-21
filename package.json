@@ -1,52 +1,97 @@
 {
-    "name": "Jarvis",
-    "version": "0.6.9",
-    "description": "A simple WhatsApp Bot Based On WhiskeySockets/Baileys",
-    "main": "index.js",
-    "scripts": {
-        "start": "pm2 start . --attach --name jarvis",
-        "stop": "pm2 stop jarvis"
+  "name": "Jarvis",
+  "version": "1.0.0",
+  "description": "Jarvis Multi Device WhatsApp Bot",
+  "logo": "https://i.imgur.com/PmfMtfa.jpeg",
+  "keywords": ["whatsapp"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ultar12/jarvis-md"
+  },
+  "website": "https://github.com/Ultar12/jarvis-md",
+  "success_url": "https://github.com/Ultar12/jarvis-md",
+  "stack": "container",
+  "env": {
+    "BOT_INFO": {
+      "description": "botname;ownername;ownernumber;image url",
+      "required": true,
+      "value": "ᴊᴀʀᴠɪꜱ;ʟᴏᴋɪ-xᴇʀ;https://i.imgur.com/VIpl3q5.mp4"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Loki-Xer/Jarvis-md.git"
+    "AUDIO_DATA": {
+      "description": "audio package name",
+      "required": true,
+      "value": "ʟᴏᴋɪ-xᴇʀ;ᴊᴀʀᴠɪꜱ;https://i.imgur.com/VgxJeCm.jpeg"
     },
-    "dependencies": {
-        "@adiwajshing/keyed-db": "^0.2.4",
-        "@ffmpeg-installer/ffmpeg": "^1.1.0",
-        "@hapi/boom": "^10.0.1",
-        "@whiskeysockets/baileys": "^6.3.0",
-        "axios": "^0.24.0",
-        "pm2": "^5.2.0",
-        "awesome-phonenumber": "^6.4.0",
-        "jarvis-md": "^1.0.0",
-        "browser-id3-writer": "^4.4.0",
-        "cheerio": "^1.0.0-rc.10",
-        "crypto-js": "^4.1.1",
-        "dotenv": "^16.0.3",
-        "express": "latest",
-        "file-type": "^16.5.3",
-        "fluent-ffmpeg": "^2.1.2",
-        "form-data": "^4.0.0",
-        "fs-extra": "^11.1.1",
-        "got": "^11.8.2",
-        "heroku-client": "^3.1.0",
-        "imgur": "^1.0.2",
-        "jimp": "^0.16.1",
-        "moment-timezone": "^0.5.34",
-        "jsdom": "^20.0.0",
-        "link-preview-js": "^3.0.4",
-        "node-webpmux": "^3.1.7",
-        "node-fetch": "^2.0.0",
-        "pg": "^8.7.3",
-        "pino": "^8.14.1",
-        "qrcode-terminal": "^0.12.0",
-        "sequelize": "^6.23.0",
-        "simple-git": "^3.20.0",
-        "sqlite3": "^5.1.6",
-        "string-crypto": "2.0.2",
-        "util": "^0.12.5",
-        "imgbb-uploader": "^1.4.0",
-        "wa-sticker-formatter": "^4.3.2"
+    "WARN_COUNT": {
+      "description": "warn count",
+      "required": true,
+      "value": "3"
+    },
+    "SERVER": {
+      "description": "deploying server",
+      "required": true,
+      "value": "heroku"
+    },
+    "AUTO_STATUS_VIEWS": {
+      "description": "auto status views",
+      "required": true,
+      "value": "false"
+    },
+    "MEDIA_DATA": {
+      "description": "media data that uses in list",
+      "required": true,
+      "value": "ʟɪꜱᴛ ᴍᴇɴᴜ;ᴊᴀʀᴠɪꜱ-ᴍᴅ;https://i.imgur.com/ltPPMTh.jpeg"
+    },
+    "HANDLER": {
+      "description": "handler for bot. all so can be null or false",
+      "required": true,
+      "value": "."
+    },
+    "SESSION_ID": {
+      "description": "session id",
+      "required": true
+    },
+    "WORK_TYPE": {
+      "description": "worker type public or private",
+      "required": true,
+      "value": "private"
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Heroku app name, same as above entered",
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "description": "Heroku account API key, https://dashboard.heroku.com/account",
+      "required": true
+    },
+    "STICKER_PACKNAME": {
+      "description": "sticker package name",
+      "required": true,
+      "value": "ʟᴏᴋɪ;ᴊᴀʀᴠɪꜱ"
+    },
+    "SUDO": {
+      "description": "owner number of the bot",
+      "required": false,
+      "value": "41782221168"
     }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku-community/apt"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
 }
